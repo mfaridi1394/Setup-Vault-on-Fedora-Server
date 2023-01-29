@@ -88,11 +88,9 @@ I use file for store data, you can use other File storage for your project.
  
  cd tls
  ```
- sudo openssl req -out tls.crt -new -keyout tls.key -newkey rsa:4096 -nodes -sha256 -x509 -subj "/O=HashiCorp/CN=Vault" -addext "subjectAltName =IP:127.0.0.1,IP:192.168.90.125,DNS:vault.mfaridi.local"  -days 3650 ```
- 
- 
-
-We must copy our self sign certificate 
+ sudo openssl req -out tls.crt -new -keyout tls.key -newkey rsa:4096 -nodes -sha256 -x509 -subj "/O=HashiCorp/CN=Vault" -addext "subjectAltName =IP:127.0.0.1,IP:192.168.90.125,DNS:vault.mfaridi.local"  -days 3650 
+ ```
+ We must copy our self sign certificate 
 
 cp tls.crt /etc/pki/ca-trust/source/anchors
 
