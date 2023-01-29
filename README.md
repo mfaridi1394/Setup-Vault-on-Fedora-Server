@@ -4,6 +4,7 @@ Vault is use for keep our secret safe and secure.
 For setup Vault in production mode in Fedora Server, we must do:
 wget vault from hashicorp website
 
+```
 unzip vault*.zip
 mv vault /usr/local/bin
 
@@ -20,9 +21,10 @@ mkdir -p /var/lib/vault/data
 sudo useradd --system --home /etc/vault --shell /bin/false vault
 
 sudo chown -R vault:vault /etc/vault /var/lib/vault/
+```
 
 For start at boot We can use systemd
-
+```
 vim /etc/systemd/system/vault.service
 
 [Unit]
@@ -41,7 +43,7 @@ ExecStop=/usr/local/bin/vault step-down
 
 [Install]
 WantedBy=multi-user.target
-
+```
 This is my config.hcl in production mode
 ```
 vim /etc/vault/config.hcl
@@ -86,12 +88,12 @@ I use file for store data, you can use other File storage for your project.
  
  cd tls
  ```
- sudo openssl req -out tls.crt -new -keyout tls.key -newkey rsa:4096 -nodes -sha256 -x509 -subj "/O=HashiCorp/CN=Vault" -addext "subjectAltName =IP:127.0.0.1,IP:192.168.90.125,DNS:vault.mfaridi.local"  -days 3650
+ sudo openssl req -out tls.crt -new -keyout tls.key -newkey rsa:4096 -nodes -sha256 -x509 -subj "/O=HashiCorp/CN=Vault" -addext "subjectAltName =IP:127.0.0.1,IP:192.168.90.125,DNS:vault.mfaridi.local"  -days 3650 ```
  
- ```
+ 
 
 We must copy our self sign certificate 
-
+```
 cp tls.crt /etc/pki/ca-trust/source/anchors
 
 and update our certificate cache
