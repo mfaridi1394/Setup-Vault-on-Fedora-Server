@@ -95,7 +95,7 @@ I use file for store data, you can use other File storage for your project.
 cp tls.crt /etc/pki/ca-trust/source/anchors
 
 and update our certificate cache
-
+```
 sudo update-ca-trust
 
 sudo systemctl daemon-reload
@@ -115,24 +115,24 @@ sudo systemctl restart vault
 export VAULT_ADDR=https://192.168.90.125:8200
 
 echo "export VAULT_ADDR=https://192.168.90.125:8200" >> ~/.bashrc
-
+```
 We must init the Keys and tokens for use Vault
-
+```
 sudo vault operator init > /etc/vault/init.file
-
+```
 after init we must export our root token 
 
 export VAULT_TOKEN="****************************"
 
 vault status can show us our vault server is sealed and must be unseal
 we use this commands  for unsealed vault
-
+```
 vault operator unseal key1
 
 vault operator unseal key2
 
 vault operator unseal key3
-
+```
 
 We can use this command for create first secret store
 
