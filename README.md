@@ -43,7 +43,7 @@ ExecStop=/usr/local/bin/vault step-down
 WantedBy=multi-user.target
 
 This is my config.hcl in production mode
-
+```
 vim /etc/vault/config.hcl
 
 #mlock = true
@@ -76,12 +76,19 @@ tls_key_file = "/var/lib/vault/data/tls/tls.key"
 cluster_addr="http://127.0.0.1:8201"
 api_addr="http://127.0.0.1:8200"
 
+```
 
 I use file for store data, you can use other File storage for your project.
+
  cd /var/lib/vault/data/
+ 
  mkdir tls
+ 
  cd tls
+ ```
  sudo openssl req -out tls.crt -new -keyout tls.key -newkey rsa:4096 -nodes -sha256 -x509 -subj "/O=HashiCorp/CN=Vault" -addext "subjectAltName =IP:127.0.0.1,IP:192.168.90.125,DNS:vault.mfaridi.local"  -days 3650
+ 
+ ```
 
 We must copy our self sign certificate 
 
